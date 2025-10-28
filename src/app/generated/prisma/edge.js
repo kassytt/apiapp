@@ -160,7 +160,7 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../../../.env",
+    "rootEnvPath": null,
     "schemaEnvPath": "../../../../.env"
   },
   "relativePath": "../../../../prisma",
@@ -179,8 +179,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/app/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Article {\n  id         Int        @id @default(autoincrement())\n  title      String\n  content    String\n  comments   Comment[]\n  categories Category[]\n  createdAt  DateTime   @default(now())\n  updatedAt  DateTime   @default(now())\n}\n\nmodel Comment {\n  id        Int      @id @default(autoincrement())\n  comment   String\n  article   Article  @relation(fields: [articleId], references: [id])\n  articleId Int\n  createdAt DateTime @default(now())\n  updatedAt DateTime @default(now())\n}\n\nmodel Category {\n  id        Int       @id @default(autoincrement())\n  category  String\n  articles  Article[]\n  createdAt DateTime  @default(now())\n  updatedAt DateTime  @default(now())\n}\n",
-  "inlineSchemaHash": "bdba5e5b49b688e8ea5a3778613afe656445e297ccda2908792cb9596cf411d3",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/app/generated/prisma\"\n}\n\ngenerator markdown {\n  provider = \"prisma-markdown\"\n  output   = \"./ERD.md\"\n  title    = \"ER図\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Article {\n  id         Int        @id @default(autoincrement())\n  title      String\n  content    String\n  comments   Comment[]\n  categories Category[]\n  createdAt  DateTime   @default(now())\n  updatedAt  DateTime   @default(now())\n}\n\nmodel Comment {\n  id        Int      @id @default(autoincrement())\n  comment   String\n  article   Article  @relation(fields: [articleId], references: [id])\n  articleId Int\n  createdAt DateTime @default(now())\n  updatedAt DateTime @default(now())\n}\n\nmodel Category {\n  id        Int       @id @default(autoincrement())\n  category  String\n  articles  Article[]\n  createdAt DateTime  @default(now())\n  updatedAt DateTime  @default(now())\n}\n",
+  "inlineSchemaHash": "590a2704b01bdeb4bf5f35ff97e2998dd6c2364374d9cdde37e298bfd4de2b1d",
   "copyEngine": true
 }
 config.dirname = '/'
