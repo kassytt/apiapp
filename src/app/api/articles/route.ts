@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server"
 
 const prisma = new PrismaClient()
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   const result = await prisma.article.findMany({
     include: {
       categories: true,
